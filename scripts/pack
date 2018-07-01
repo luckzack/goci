@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -e
+
+cd $(dirname $0)/../release
+
+echo -----------------------------------------------------------------------
+echo "[Pack] start..."
+start_tm=`date +%s%N`
+
+APP="{APP}"
+
+VERSION=`./$APP -v| sed -e 's/.*version //g'`
+IMAGE=hub.yfcloud.io/{PROJECT}/{APP}
+
+UPDATED_AT=`date "+%Y-%m-%d %H:%M:%S"`
+
+sed -i "s/{UPDATED_AT}/$UPDATED_AT/g" Dockerfile
+
+docker build -t ${IMAGE}:${VERSION} .
+docker push ${IMAGE}:${VERSION}
+
+end_tm=`date +%s%N`
+use_tm=`echo $end_tm $start_tm | awk '{ print ($1 - $2) / 1000000000}'`
+
+echo "[Pack] finished in ${use_tm}s"

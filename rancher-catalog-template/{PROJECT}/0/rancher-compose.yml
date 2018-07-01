@@ -1,0 +1,23 @@
+.catalog:
+  name: {PROJECT}
+  version: 0
+  description: A demo of rancher catalog template.
+  uuid: {PROJECT}-0
+  questions:
+  - variable: HTTP_LISTEN_PORT
+    label: "HTTP_LISTEN_PORT"
+    description: "Specify an available port to listen."
+    default: 9091
+    required: true
+    type: "int"
+  - variable: LOG_PATH
+    label: "LOG_PATH"
+    description: "Specify an local path to storage the logs."
+    default: "/data/{PROJECT}/{APP}"
+    required: true
+    type: "string"
+  
+{APP}:
+  scale: 1
+  start_on_create: true
+

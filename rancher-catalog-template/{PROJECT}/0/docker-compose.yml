@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  {APP}:
+    image: hub.yfcloud.com/{PROJECT}/{APP}:latest
+    network_mode: host
+    tty: true
+    stdin_open: true
+    ports:
+      - "${HTTP_LISTEN_PORT}:9091"
+    command:
+      - -conf=/path/to/config_file
+    volumes:
+      - "${LOG_PATH}:${LOG_PATH}"
+    labels:
+      io.rancher.container.pull_image: always

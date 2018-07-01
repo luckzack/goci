@@ -1,0 +1,13 @@
+#!/bin/bash -ilex
+#!/usr/bin/env bash
+set -e
+
+cd $(dirname $0)
+
+
+./godep
+./test
+./review
+./build
+./pack
+./rancherize

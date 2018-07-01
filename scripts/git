@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set +e
+
+APP="{APP}"
+AUTHOR="{AUTHOR}"
+
+cd $(dirname $0)/..
+
+echo -----------------------------------------------------------------------
+echo "[Git] start..."
+start_tm=`date +%s%N`
+
+stat .git
+existed=$?
+set -e
+
+if [ $existed -gt 0 ]; then
+    touch .gitignore
+    echo "release" >> .gitignore
+
+    git init
+    git remote add origin git@code.yfcloud.com:$AUTHOR/$APP.git
+    git add -A
+    git commit -m "Initial Commit by goci"
+else
+    git add -A
+    git commit -m "Updated by goci"
+fi
+
+git push -u origin master
+
+end_tm=`date +%s%N`
+use_tm=`echo $end_tm $start_tm | awk '{ print ($1 - $2) / 1000000000}'`
+
+echo "[Git] finished in ${use_tm}s"

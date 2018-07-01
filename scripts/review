@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set +e
+
+cd $(dirname $0)/..
+
+echo -----------------------------------------------------------------------
+echo "[Review] start ..."
+start_tm=`date +%s%N`
+
+gometalinter --disable=deadcode \
+--disable=varcheck \
+--enable=misspell \
+--format='[{{.Severity}}] {{.Path}}:{{.Line}}:{{.Col}}  {{.Message}} ({{.Linter}})' \
+-t \
+./
+
+end_tm=`date +%s%N`
+use_tm=`echo $end_tm $start_tm | awk '{ print ($1 - $2) / 1000000000}'`
+
+echo "[Review] finished in ${use_tm}s"

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -e
+
+cd $(dirname $0)/..
+
+echo -----------------------------------------------------------------------
+echo "[Rancherize] start..."
+start_tm=`date +%s%N`
+
+echo "
+A rancher catalog template has been generated with a construction like this:
+
+rancher-catalog-template/
+└── {PROJECT}
+    ├── 0
+    │   ├── docker-compose.yml
+    │   └── rancher-compose.yml
+    ├── catalogIcon-{PROJECT}.png
+    ├── config.yml
+    └── README.md
+"
+
+end_tm=`date +%s%N`
+use_tm=`echo $end_tm $start_tm | awk '{ print ($1 - $2) / 1000000000}'`
+
+echo "[Rancherize] finished in ${use_tm}s"
+
+
+

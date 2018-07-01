@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+cd $(dirname $0)/..
+
+echo -----------------------------------------------------------------------
+echo "[Test] start..."
+start_tm=`date +%s%N`
+
+PACKAGES=". $(find -name '*.go' | xargs -I{} dirname {} |  cut -f2 -d/ | sort -u | grep -Ev '(^\.$|.git|.trash-cache|vendor|bin)' | sed -e 's!^!./!' -e 's!$!/...!')"
+
+[ "${ARCH}" == "amd64" ] && RACE=-race
+
+echo $PACKAGES
+go test ${RACE} -cover -tags=test ${PACKAGES}
+
+end_tm=`date +%s%N`
+use_tm=`echo $end_tm $start_tm | awk '{ print ($1 - $2) / 1000000000}'`
+
+echo "[Test] finished in ${use_tm}s"

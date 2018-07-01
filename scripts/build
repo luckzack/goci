@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -e
+
+PROJECT="{PROJECT}"
+APP="{APP}"
+AUTHOR="{AUTHOR}"
+
+
+cd $(dirname $0)/..
+
+echo -----------------------------------------------------------------------
+echo "[Build] start..."
+
+start_tm=`date +%s%N`
+
+#go build -ldflags "-X main.VERSION=1.0.0 -X 'main.BUILD_TIME=`date`' -X 'main.GO_VERSION=`go version`' -X 'main.AUTHOR=$AUTHOR'" -o release/$APP ./
+go build -ldflags " -X 'main.BuildTime=`date`' -X 'main.GoVersion=`go version`' -X 'main.AUTHOR=$AUTHOR'" -o release/$APP ./
+
+mkdir -p /data/static/release/$AUTHOR/$PROJECT/
+cp -f release/$APP /data/static/release/$AUTHOR/$PROJECT
+
+cp Dockerfile ./release
+
+end_tm=`date +%s%N`;
+use_tm=`echo $end_tm $start_tm | awk '{ print ($1 - $2) / 1000000000}'`
+
+echo "[Build] finished in ${use_tm}s"

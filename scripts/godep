@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd $(dirname $0)/..
+
+echo -----------------------------------------------------------------------
+echo "[Godep] start..."
+start_tm=`date +%s%N`
+
+dep ensure
+
+echo ""
+dep status
+echo ""
+
+end_tm=`date +%s%N`
+use_tm=`echo $end_tm $start_tm | awk '{ print ($1 - $2) / 1000000000}'`
+
+echo "[Godep] finished in ${use_tm}s"
