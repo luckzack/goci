@@ -85,7 +85,7 @@ Including:
 
 ## Architecture
 
-![goci](http://ww1.sinaimg.cn/large/007bRB9vgy1fsubny2jhcj30t40rqta7.jpg)
+![goci](http://ww1.sinaimg.cn/large/007bRB9vgy1fsubqfilrtj30t40rqta7.jpg)
 
 ## Dependencies
 
