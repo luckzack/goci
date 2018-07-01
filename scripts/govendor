@@ -9,7 +9,7 @@ echo "[Govendor] start..."
 start_tm=`date +%s%N`
 
 govendor sync
-#govendor fetch code.yfcloud.com/{{username}}/{{project}}
+#govendor fetch code.yourdomain.com/{{username}}/{{project}}
 
 echo ""
 govendor list

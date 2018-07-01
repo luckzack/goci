@@ -19,7 +19,7 @@ if [ $existed -gt 0 ]; then
     echo "release" >> .gitignore
 
     git init
-    git remote add origin git@code.yfcloud.com:$AUTHOR/$APP.git
+    git remote add origin git@code.yourdomain.com:$AUTHOR/$APP.git
     git add -A
     git commit -m "Initial Commit by goci"
 else

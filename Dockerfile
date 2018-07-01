@@ -6,7 +6,7 @@ LABEL module     "{APP}"
 LABEL created_at "{CREATED_AT}"
 LABEL updated_at "{UPDATED_AT}"
 
-MAINTAINER {AUTHOR} <{AUTHOR}@yfcloud.com>
+MAINTAINER {AUTHOR} <{AUTHOR}@yourdomain.com>
 
 ADD {APP} /{PROJECT}/{APP}/
 

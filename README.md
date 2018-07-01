@@ -1,10 +1,10 @@
-A CI Flow builder for Go applications based on yfcloud's repository.
+A CI Flow builder for Go applications based on yourdomain's repository.
 =====================================
 
 ## Install
 
 ```
-bash <(curl -s http://agent.ops.yunfancdn.com/static/goci/install.sh)
+bash <(curl -s http://agent.ops.yourdomain.com/static/goci/install.sh)
 ```
 
 ## Usage
@@ -33,13 +33,13 @@ Set project's name to app's name.
 **e.g.**
 
 ```
-goci demo HelloWorld lvzhuo
+goci demo HelloWorld yourname
 ```
 
 
-That will create a folder `./HelloWorld` contains a new go project named `HelloWorld` and expected to be pushed into `hub.yfcloud.com/demo/HelloWorld`,
+That will create a folder `./HelloWorld` contains a new go project named `HelloWorld` and expected to be pushed into `hub.yourdomain.com/demo/HelloWorld`,
 
-Naturally the image's creator is `lvzhuo`.
+Naturally the image's creator is `yourname`.
 
 Furthermore, this project will generate a rancher catalog template named `demo`,
 
@@ -53,8 +53,8 @@ Use below command to push this project to your gitlab repository:
 make git
 ```
 
-The repository's address defaults to `git@code.yfcloud.com:<Author>/<App Name>.git`.
-So in the above case, your project will be pushed to `git@code.yfcloud.com:lvzhuo/Helloworld.git`.
+The repository's address defaults to `git@code.yourdomain.com:<Author>/<App Name>.git`.
+So in the above case, your project will be pushed to `git@code.yourdomain.com:yourname/Helloworld.git`.
 
 
 ### Step 3. Create a project at Jenkins
@@ -85,7 +85,7 @@ Including:
 
 ## Architecture
 
-![goci](http://ww1.sinaimg.cn/large/49e65d94gy1fjq6purw2oj20t40rqta7.jpg)
+![goci](http://ww1.sinaimg.cn/large/007bRB9vgy1fsubny2jhcj30t40rqta7.jpg)
 
 ## Dependencies
 

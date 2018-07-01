@@ -2,7 +2,7 @@ version: '2'
 
 services:
   {APP}:
-    image: hub.yfcloud.com/{PROJECT}/{APP}:latest
+    image: hub.yourdomain.com/{PROJECT}/{APP}:latest
     network_mode: host
     tty: true
     stdin_open: true

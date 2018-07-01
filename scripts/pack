@@ -10,7 +10,7 @@ start_tm=`date +%s%N`
 APP="{APP}"
 
 VERSION=`./$APP -v| sed -e 's/.*version //g'`
-IMAGE=hub.yfcloud.io/{PROJECT}/{APP}
+IMAGE=hub.yourdomain.io/{PROJECT}/{APP}
 
 UPDATED_AT=`date "+%Y-%m-%d %H:%M:%S"`
 
